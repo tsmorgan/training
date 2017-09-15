@@ -1,7 +1,6 @@
-// Check for `node_modules` folder and warn if missing
-
 var path = require('path')
 var fs = require('fs')
+var spawn = require('cross-spawn')
 
 // Check if node_modules folder exists
 const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'))
@@ -19,10 +18,6 @@ if (!envExists) {
 }
 
 // run gulp
-
-var spawn = require('cross-spawn')
-
-process.env['FORCE_COLOR'] = 1
 var gulp = spawn('gulp')
 gulp.stdout.pipe(process.stdout)
 gulp.stderr.pipe(process.stderr)
